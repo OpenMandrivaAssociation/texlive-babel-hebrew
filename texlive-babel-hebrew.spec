@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-babel-hebrew
 Version:	2.3h
-Release:	1
+Release:	2
 Summary:	TeXLive babel-hebrew package
 Group:		Publishing
 URL:		http://tug.org/texlive
