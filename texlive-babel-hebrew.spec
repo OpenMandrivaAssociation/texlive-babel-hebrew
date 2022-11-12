@@ -5,9 +5,9 @@ Summary:	TeXLive babel-hebrew package
 Group:		Publishing
 URL:		http://tug.org/texlive
 License:	http://www.tug.org/texlive/LICENSE.TL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-hebrew.r30273.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-hebrew.doc.r30273.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-hebrew.source.r30273.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-hebrew.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-hebrew.doc.r%{version}.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-hebrew.source.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
