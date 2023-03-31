@@ -1,6 +1,6 @@
 Name:		texlive-babel-hebrew
 Version:	30273
-Release:	1
+Release:	2
 Summary:	TeXLive babel-hebrew package
 Group:		Publishing
 URL:		http://tug.org/texlive
