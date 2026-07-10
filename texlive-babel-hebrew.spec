@@ -1,83 +1,34 @@
-Name:		texlive-babel-hebrew
-Version:	30273
-Release:	2
-Summary:	TeXLive babel-hebrew package
+%global tl_name babel-hebrew
+%global tl_revision 77914
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	2.5
+Release:	%{tl_revision}.1
+Summary:	Babel support for Hebrew
 Group:		Publishing
-URL:		https://tug.org/texlive
-License:	http://www.tug.org/texlive/LICENSE.TL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-hebrew.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-hebrew.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-hebrew.source.r%{version}.tar.xz
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/babel-contrib/hebrew
+License:	lppl1.3
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-hebrew.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-hebrew.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/babel-hebrew.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-TeXLive babel-hebrew package.
+The package provides the language definition file for support of Hebrew
+in babel. Macros to control the use of text direction control of TeX--
+XeT and e-TeX are provided (and may be used elsewhere). Some shortcuts
+are defined, as well as translations to Hebrew of standard "LaTeX
+names". For questions, bug reports, or support, please open an issue in
+the repository. Note: the package is in maintenance mode. Bugs will be
+fixed, but no new features will be added. The .ldf file is only
+compatible with pdfLaTeX or LaTeX. Even then, for documents containing
+more than a short text in Hebrew, it is strongly recommended to use
+LuaTeX (with babel's .ini file or polyglossia). For short texts with
+pdfTeX, use the .ini file. Consult the documentation of babel for better
+settings for Hebrew.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/generic/babel-hebrew/8859-8.def
-%{_texmfdistdir}/tex/generic/babel-hebrew/cp1255.def
-%{_texmfdistdir}/tex/generic/babel-hebrew/cp862.def
-%{_texmfdistdir}/tex/generic/babel-hebrew/he8OmegaHebrew.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/he8aharoni.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/he8cmr.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/he8cmss.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/he8cmtt.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/he8david.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/he8drugulin.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/he8enc.def
-%{_texmfdistdir}/tex/generic/babel-hebrew/he8frankruehl.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/he8miriam.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/he8nachlieli.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/he8yad.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/hebcal.sty
-%{_texmfdistdir}/tex/generic/babel-hebrew/hebfont.sty
-%{_texmfdistdir}/tex/generic/babel-hebrew/hebrew.ldf
-%{_texmfdistdir}/tex/generic/babel-hebrew/hebrew_newcode.sty
-%{_texmfdistdir}/tex/generic/babel-hebrew/hebrew_oldcode.sty
-%{_texmfdistdir}/tex/generic/babel-hebrew/hebrew_p.sty
-%{_texmfdistdir}/tex/generic/babel-hebrew/lheclas.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/lhecmr.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/lhecmss.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/lhecmtt.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/lhecrml.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/lheenc.def
-%{_texmfdistdir}/tex/generic/babel-hebrew/lhefr.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/lheredis.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/lheshold.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/lheshscr.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/lheshstk.fd
-%{_texmfdistdir}/tex/generic/babel-hebrew/rlbabel.def
-%{_texmfdistdir}/tex/generic/babel-hebrew/si960.def
-%doc %{_texmfdistdir}/doc/generic/babel-hebrew/00readme.heb
-%doc %{_texmfdistdir}/doc/generic/babel-hebrew/heb209.pdf
-%doc %{_texmfdistdir}/doc/generic/babel-hebrew/hebinp.pdf
-%doc %{_texmfdistdir}/doc/generic/babel-hebrew/hebrew.pdf
-#- source
-%doc %{_texmfdistdir}/source/generic/babel-hebrew/heb209.dtx
-%doc %{_texmfdistdir}/source/generic/babel-hebrew/hebinp.dtx
-%doc %{_texmfdistdir}/source/generic/babel-hebrew/hebrew.dtx
-%doc %{_texmfdistdir}/source/generic/babel-hebrew/hebrew.fdd
-%doc %{_texmfdistdir}/source/generic/babel-hebrew/hebrew.ins
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
